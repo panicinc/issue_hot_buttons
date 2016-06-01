@@ -1,6 +1,6 @@
 <%
   issue_statuses = {}
-  IssueStatus.find(:all).each { |status| issue_statuses[status.id] = status.name }
+  IssueStatus.all.each { |status| issue_statuses[status.id] = status.name }
 
   issue_fields = {
     :issue_tracker_id => l(:field_tracker),
@@ -17,7 +17,7 @@
 
   issue_custom_fields = {}
   time_entry_custom_fields = {}
-  CustomField.find(:all).each { |field|
+  CustomField.all.each { |field|
     if field[:type].eql? "IssueCustomField"
       issue_custom_fields[field.id] = field.name
     elsif field[:type].eql? "TimeEntryCustomField"
@@ -26,19 +26,19 @@
   }
   
   user_roles = {}
-  Role.find(:all).each { |role| user_roles[role.id] = role.name }
+  Role.all.each { |role| user_roles[role.id] = role.name }
   
   i18n_strings = I18n.backend.send(:translations)
   locale = I18n.locale
 
   trackers = {}
-  Tracker.find(:all).each { |tracker| trackers[tracker.id] = tracker.name }
+  Tracker.all.each { |tracker| trackers[tracker.id] = tracker.name }
 
   activities = {}
-  TimeEntryActivity.find(:all, :conditions => ['project_id IS NULL AND active = 1']).each { |activity| activities[activity.id] = activity.name}
+  TimeEntryActivity.where('project_id IS NULL AND active = 1').each { |activity| activities[activity.id] = activity.name}
   
   projects = {}
-  Project.find(:all).each { |project|
+  Project.all.each { |project|
     projects[project.id] = project.name
     project.activities.each { |activity|
       activities[activity.id] || activities[activity.id] = "#{activity.name} (#{project.name})"

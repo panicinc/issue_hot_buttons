@@ -62,7 +62,7 @@ jQuery(document).ready(function() {
           case 'issue_assigned_to':
           case 'issue_not_assigned_to':
             var allowed_users = [];
-            var assigned_to = t.issue.issue.assigned_to_id;
+            var assigned_to = t.issue.assigned_to_id;
             condition.each(function(role) {
               if (! Object.isUndefined(t.users_per_role[role])) {
                 allowed_users = allowed_users.concat(t.users_per_role[role]);
@@ -91,7 +91,7 @@ jQuery(document).ready(function() {
           
           case 'issue_status':
           case 'issue_status_is_not':
-            var issue_status = t.issue.issue.status_id.toString();
+            var issue_status = t.issue.status_id.toString();
             result = condition.indexOf(issue_status) > -1;
             result = 'issue_status' == condition_name
               ? result
@@ -100,7 +100,7 @@ jQuery(document).ready(function() {
             
           case 'issue_tracker':
           case 'issue_tracker_is_not':
-            var issue_tracker = t.issue.issue.tracker_id.toString();
+            var issue_tracker = t.issue.tracker_id.toString();
             result = condition.indexOf(issue_tracker) > -1;
             result = 'issue_tracker' == condition_name
               ? result
@@ -109,7 +109,7 @@ jQuery(document).ready(function() {
             
           case 'project':
           case 'project_is_not':
-            var issue_project = t.issue.issue.project_id.toString();
+            var issue_project = t.issue.project_id.toString();
             result = condition.indexOf(issue_project) > -1;
             result = 'project' == condition_name
               ? result
@@ -946,13 +946,13 @@ jQuery(document).ready(function() {
       var working_hours = (working_time / 60 / 60);
       
       var post_data = {
-        'time_entry[issue_id]': t.issue.issue.id,
+        'time_entry[issue_id]': t.issue.id,
         'time_entry[spent_on]': t.today,
         'time_entry[hours]': working_hours,
         'authenticity_token': $$P('input[name="authenticity_token"]').first().value
       };
       
-      var request_url = ['/projects', t.project.project.identifier, 'timelog/create'].join('/');
+      var request_url = '/time_entries'; /* ['/projects', t.project.identifier, 'time_entries/new'].join('/'); */
       
       [
         'activity',
@@ -1014,12 +1014,12 @@ jQuery(document).ready(function() {
     
     is_workflow_suitable: function() {
       if (! this.nearby_issues) return false;
-      if (this.nearby_issues.indexOf(this.issue.issue.id) < 0) return false;
+      if (this.nearby_issues.indexOf(this.issue.id) < 0) return false;
       switch (this.kind) {
         case 'next':
-          return this.nearby_issues.indexOf(this.issue.issue.id) < this.nearby_issues.length - 1;
+          return this.nearby_issues.indexOf(this.issue.id) < this.nearby_issues.length - 1;
         case 'prev':
-          return this.nearby_issues.indexOf(this.issue.issue.id) > 0;
+          return this.nearby_issues.indexOf(this.issue.id) > 0;
         default:
           return false;
       }
@@ -1057,7 +1057,7 @@ jQuery(document).ready(function() {
     
     submit_action: function(e, t) {
       var button = e.element();
-      var position = t.nearby_issues.indexOf(t.issue.issue.id);
+      var position = t.nearby_issues.indexOf(t.issue.id);
       
       switch (button.kind) {
         case 'next':

@@ -13,6 +13,9 @@ Licensed under GNU Lesser General Public License, version 2.1
 
 Documentation: http://thumbtack-technology.github.com/redmine-issue-hot-buttons/
 
+
+Updated for Redmine 3.x
+
 Install
 -------
 

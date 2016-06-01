@@ -11,7 +11,7 @@
   locale = I18n.locale
   
   #escaping issue description as script tags were breaking rendering
-  @issue_copy = @issue.dup
+  @issue_copy = @issue.clone
   unless @issue_copy.description.nil?
     @issue_copy.description.gsub!(/[><]/, { '>' => '&gt;', '<' => '&lt;' })
   end
