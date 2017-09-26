@@ -2,6 +2,8 @@ module IssueHotButtons
   module IssuesControllerPatch     
 
     def self.included(base)
+      base.send(:helper, :sort)
+      base.send(:include, SortHelper)
       base.send(:include, InstanceMethods)
       base.class_eval do
         before_filter :nearby_issues, :only => :show
