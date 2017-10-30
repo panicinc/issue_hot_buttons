@@ -11,22 +11,17 @@ tracking working time and buttons "Next Issue" and "Previous Issue".
 
 Licensed under GNU Lesser General Public License, version 2.1
 
-Documentation: http://thumbtack-technology.github.com/redmine-issue-hot-buttons/
-
-
 Updated for Redmine 3.x
 
 Install
 -------
 
-1. `Download <https://github.com/thumbtack-technology/redmine-issue-hot-buttons/downloads>`_ plugin
+1. `Download <https://github.com/panicinc/redmine-issue-hot-buttons/downloads>`_ plugin
 2. Extract to your Redmine into vendor/plugins/issue_hot_buttons
 3. Restart web server
 
-Author
+Original Author
 ------
-.. image:: http://thumbtack-technology.github.com/redmine-issue-hot-buttons/thumbtack_logo.png
-
 `Thumbtack Technology, Inc. <http://thumbtack.net>`_, Mike Kolganov (mike.kolganov@gmail.com)
 
 
