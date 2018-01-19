@@ -43,7 +43,7 @@ zh-TW:
     time_tracker_timer_prefix_value: "已用時間"
     time_tracker_round_interval_label: "回合間隔時間"
     time_tracker_round_interval_value: "15"
-    time_tracker_with_seconds_label: "包含秒數計時器"
+    time_tracker_with_seconds_label: "包含秒數的計時器"
     time_tracker_timer_in_title_label: "在頁面標題顯示計時器"
 
     issue_update: "議題更新"
