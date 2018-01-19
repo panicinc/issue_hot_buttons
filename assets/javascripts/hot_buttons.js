@@ -579,6 +579,15 @@ jQuery(document).ready(function() {
           case 'include_comment':
             var include_comment = button.config.get('include_comment').evalJSON();
             if (include_comment) {
+              //Fix to make this plugin compatible with CKEditor plugin
+              if (CKEDITOR && CKEDITOR.instances["issue_notes"]) {
+                //destroy CKEDITOR so it won't replace notes text with his empty value on submit
+                try {
+                  CKEDITOR.instances["issue_notes"].destroy()
+                } catch(ex) {
+                  //nothing to do.
+                }
+              }
               $P('issue_notes').value = button.up().select('textarea.notes').first().value;
             }
             break;
