@@ -7,11 +7,6 @@ else
   object_to_prepare = Rails.configuration
 end
 
-object_to_prepare.to_prepare do
-  require File.dirname(__FILE__) + '/lib/issues_controller_patch.rb'
-  IssuesController.send(:include, IssueHotButtons::IssuesControllerPatch)
-end
-
 class Hooks < Redmine::Hook::ViewListener
   render_on :view_issues_show_details_bottom,
     :partial => 'hot_buttons/assets',
