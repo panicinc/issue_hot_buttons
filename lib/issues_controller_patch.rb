@@ -6,8 +6,13 @@ module IssueHotButtons
       base.send(:include, SortHelper)
       base.send(:include, InstanceMethods)
       base.class_eval do
-        before_filter :nearby_issues, :only => :show
-        before_filter :store_last_seen_project, :only => :index
+        if Rails::VERSION::MAJOR < 5
+          before_filter :nearby_issues, :only => :show
+          before_filter :store_last_seen_project, :only => :index
+        else
+          before_action :nearby_issues, :only => :show
+          before_action :store_last_seen_project, :only => :index
+        end
       end
     end
     
