@@ -580,7 +580,7 @@ jQuery(document).ready(function() {
             var include_comment = button.config.get('include_comment').evalJSON();
             if (include_comment) {
               //Fix to make this plugin compatible with CKEditor plugin
-              if (CKEDITOR && CKEDITOR.instances["issue_notes"]) {
+              if (typeof CKEDITOR != "undefined" && CKEDITOR && CKEDITOR.instances["issue_notes"]) {
                 //destroy CKEDITOR so it won't replace notes text with his empty value on submit
                 try {
                   CKEDITOR.instances["issue_notes"].destroy()
